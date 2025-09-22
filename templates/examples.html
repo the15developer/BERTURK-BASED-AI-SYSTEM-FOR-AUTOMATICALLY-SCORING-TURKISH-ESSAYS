@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Örnek Kompozisyonlar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+    body { display: flex; min-height: 100vh; background-color: #f9f9f9; color: #333; }
+
+    .sidebar {
+      width: 220px;
+      background-color: #dceeff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: fixed;
+      height: 100%;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s;
+    }
+    .sidebar a:hover {
+      background-color: #e8f4ff;
+    }
+    .sidebar a.active {
+      font-weight: bold;
+      background-color: #e8f4ff;
+    }
+
+    .main {
+      flex: 1;
+      margin-left: 220px;
+      padding: 40px 20px;
+    }
+    .main h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .main p.description {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .examples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .example-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 100%;
+      max-width: 400px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .example-card:hover {
+      transform: scale(1.02);
+      background-color: #fdfdfd;
+    }
+    .example-preview {
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #333;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .badge {
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #333;
+    }
+    .green { background-color: #a8e6cf; }
+    .blue { background-color: #d0ebff; }
+    .yellow { background-color: #fff3bf; }
+    .purple { background-color: #e0bbff; }
+
+    @media (max-width: 768px) {
+      .main {
+        margin-left: 0;
+        padding: 20px;
+      }
+      .sidebar {
+        position: relative;
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      .sidebar a {
+        flex-shrink: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+ <div class="sidebar">
+  <a href="{{ url_for('index') }}">🏠Ana Sayfa</a>
+  <a href="{{ url_for('examples') }}">📄Örnekler</a>
+  <a href="{{ url_for('about') }}">ℹ️Hakkımızda</a>
+  <a href="{{ url_for('help') }}">❓ Yardım</a>
+  <a href="{{ url_for('contact') }}">📬İletişim</a>
+</div>
+
+  <main class="main">
+    <h1>Örnek Kompozisyonlar</h1>
+    <p class="description">Sistemde puanlanmış bazı örnek kompozisyonları ve puanlarını inceleyebilirsiniz.</p>
+
+    <div class="examples">
+      <div class="example-card">
+        <p class="example-preview">İnsanlar tarih boyunca doğayla iç içe yaşamış, onun kaynaklarından faydalanmışlardır. Ancak günümüzde bu ilişki bozulmuş durumda...</p>
+        <div class="badges">
+          <span class="badge green">📝 4.0</span>
+          <span class="badge blue">🔗 3.0</span>
+          <span class="badge yellow">📚 2.5</span>
+          <span class="badge purple">🌟 9.0</span>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <p class="example-preview">Teknolojinin gelişmesiyle birlikte insanların iletişim biçimleri büyük değişiklikler göstermiştir. Özellikle sosyal medya platformları...</p>
+        <div class="badges">
+          <span class="badge green">📝 3.5</span>
+          <span class="badge blue">🔗 2.5</span>
+          <span class="badge yellow">📚 3.0</span>
+          <span class="badge purple">🌟 8.0</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

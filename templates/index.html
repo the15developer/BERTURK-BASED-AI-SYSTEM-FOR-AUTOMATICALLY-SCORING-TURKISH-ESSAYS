@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kompozisyon Puanlama Sistemi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+    body { display: flex; min-height: 100vh; background-color: #f9f9f9; color: #333; }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background-color: #e3f2fd;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s;
+    }
+    .sidebar a:hover {
+      background-color: #bbdefb;
+    }
+
+    /* Main */
+    .main {
+      flex: 1;
+      padding: 40px;
+      background-color: #fff;
+    }
+    .main h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .main p.description {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 15px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: #42a5f5;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e88e5;
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .score-card {
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      background: linear-gradient(135deg, #e0f7fa, #fff);
+    }
+    .score-card.green { background: linear-gradient(135deg, #a8e6cf, #e0f2f1); }
+    .score-card.blue { background: linear-gradient(135deg, #d0ebff, #e3f2fd); }
+    .score-card.yellow { background: linear-gradient(135deg, #fff9c4, #fffde7); }
+    .score-card.purple { background: linear-gradient(135deg, #e1bee7, #f3e5f5); }
+
+    .score-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .score-card .score {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .score-card p {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .export-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .export-buttons button {
+      background-color: #66bb6a;
+    }
+    .export-buttons button.csv {
+      background-color: #ffa726;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+  <a href="{{ url_for('index') }}">🏠Ana Sayfa</a>
+  <a href="{{ url_for('examples') }}">📄Örnekler</a>
+  <a href="{{ url_for('about') }}">ℹ️Hakkımızda</a>
+  <a href="{{ url_for('help') }}">❓ Yardım</a>
+  <a href="{{ url_for('contact') }}">📬İletişim</a>
+</div>
+  <main class="main">
+    <h1>Kompozisyon Puanlama Sistemi</h1>
+    <p class="description">Bu sistem, Türkçe kompozisyonları dil bilgisi, tutarlılık ve kelime bilgisi açısından değerlendirir.</p>
+
+    <label for="text">Kompozisyonunuzu buraya yazın:</label>
+    <textarea id="text" placeholder="Metninizi buraya yazın..."></textarea>
+    <button id="scoreBtn">Puanla</button>
+
+    <div class="results">
+      <div class="score-card purple">
+        <h3>🏆 Genel Puan <span class="score">- / 10</span></h3>
+        <p id="general-desc">Henüz değerlendirilmedi.</p>
+      </div>
+      <div class="score-card green">
+        <h3>📘 Dil Bilgisi <span class="score"> / 4</span></h3>
+        <p>Cümle yapısı ve yazım kurallarında yüksek başarı.</p>
+      </div>
+      <div class="score-card blue">
+        <h3>🔗 Tutarlılık <span class="score"> / 3</span></h3>
+        <p>Metin içindeki anlam ve geçişler genellikle tutarlı.</p>
+      </div>
+      <div class="score-card yellow">
+        <h3>🧠 Kelime Bilgisi <span class="score"> / 3</span></h3>
+        <p>Kelime çeşitliliği ve uygun kullanımı çok iyi.</p>
+      </div>
+      
+    </div>
+
+    <div class="export-buttons">
+      <button>📄 PDF Olarak İndir</button>
+      <button class="csv">📊 CSV Olarak İndir</button>
+    </div>
+  </main>
+
+
+  <script>
+    document.getElementById("scoreBtn").addEventListener("click", () => {
+        const text = document.getElementById("text").value.trim();
+        if (!text) {
+            alert("Lütfen bir metin girin.");
+            return;
+        }
+    
+        fetch("http://127.0.0.1:5000/api/score", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ text })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                alert("Hata: " + data.error);
+                return;
+            }
+            document.querySelector(".score-card.purple .score").textContent = `${data.overall_score} / 10`;
+    
+            let desc = "";
+            if (data.overall_score >= 8) {
+                desc = "Genel başarı seviyesi yüksek.";
+            } else if (data.overall_score >= 5) {
+                desc = "Orta düzey başarı.";
+            } else {
+                desc = "Geliştirilmesi gereken bir metin.";
+            }
+            document.getElementById("general-desc").textContent = desc;
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Bir hata oluştu.");
+        });
+    });
+    </script>
+
+</body>
+</html>
