@@ -8,7 +8,7 @@ The goal is to provide fast, objective, and consistent scoring of Turkish texts 
 
 ---
 
-## ⚠️ Demo Versiyonu Hakkında | About the Demo Version
+## Demo Versiyonu Hakkında | About the Demo Version
 - Şu anda sistem **farklı kaynaktan toplanmış, yaklaşık 550 kompozisyon** ile eğitilmiştir.  
 - Kompozisyonlar **Gemini** tarafından 3 ölçüte göre (dil bilgisi, tutarlılık, kelime bilgisi) puanlanmıştır ve **demo versiyonunda BERTTurk model egitimi için sadece toplam puanlar kullanılmıştır**.  
 - Gelecekte:  
@@ -26,13 +26,13 @@ The goal is to provide fast, objective, and consistent scoring of Turkish texts 
 ---
 
 
-## 🚀 Özellikler | Features 
+## Özellikler | Features 
 - BERTurk (bert-base-turkish-cased) tabanlı dil modeli  
   Based on the BERTurk (bert-base-turkish-cased) language model   
 - Toplam skor (0–10) üzerinden değerlendirme | Evaluates on Overall score (0–10)
 - Flask tabanlı web arayüzü | Flask-based web interface 
   
-## 🚀 Hedeflenen Özellikler | Planned Features 
+## Hedeflenen Özellikler | Planned Features 
 - Çoklu görev öğrenme (multi-task learning) yaklaşımı  
   Multi-task learning approach  
 - Üç ölçüt üzerinden değerlendirme | Evaluates on three criteria:
@@ -43,13 +43,13 @@ The goal is to provide fast, objective, and consistent scoring of Turkish texts 
 
 ---
 
-## 📊 Veri Seti | Dataset
+## Veri Seti | Dataset
 - Farklı kaynaklardan toplanan Türkçe kompozisyonlar (~550 adet, Gemini tarafından puanlandı)  
   Turkish essays collected from multiple sources (~550, scored by Gemini)  
 
 ---
 
-## 🔮 Gelecek Çalışmalar | Future Work
+## Gelecek Çalışmalar | Future Work
 - Uzmanlarca puanlanmış kompozisyonlarla yeniden eğitim  
   Retraining with essays scored by human experts  
 - Çoklu dil desteği (İngilizce, Almanca vb.)  
@@ -72,18 +72,18 @@ The current demo version is trained with approximately 550 essays scored by Gemi
 
 ---
 
-## 🖼️ Arayüz Görselleri | Interface Screenshots
-*(Demo arayüzünü göstermek için ekran görüntüleri eklenecektir)*  
+## Arayüz Görselleri | Interface Screenshots
 
-- ![Demo Screenshot 1](images/screenshot1.png)  
-- ![Demo Screenshot 2](images/screenshot2.png)  
-- ![Demo Screenshot 3](images/screenshot3.png)  
+
+- ![Demo Screenshot 1](images/lınkedin1.jpeg)  
+- ![Demo Screenshot 2](images/linkedin2.jpeg)  
+
 
 ---
 
 ## 🛠️ Kurulum | Installation
 ```bash
-git clone https://github.com/kullaniciadi/proje-adi.git
+git clone https://github.com/the15developer/BERTURK-BASED-AI-SYSTEM-FOR-AUTOMATICALLY-SCORING-TURKISH-ESSAYS.git
 cd project-folder
 pip install -r requirements.txt
 python app.py
