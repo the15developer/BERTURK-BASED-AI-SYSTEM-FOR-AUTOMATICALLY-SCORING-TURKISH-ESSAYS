@@ -75,8 +75,8 @@ The current demo version is trained with approximately 550 essays scored by Gemi
 ## Arayüz Görselleri | Interface Screenshots
 
 
-- ![Demo Screenshot 1](images/lınkedin1.jpeg)  
-- ![Demo Screenshot 2](images/linkedin2.jpeg)  
+- ![Demo Screenshot 1](lınkedin1.jpeg)  
+- ![Demo Screenshot 2](linkedin2.jpeg)  
 
 
 ---
