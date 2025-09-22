@@ -1,4 +1,7 @@
-# 🇹🇷 BERTTurk TABANLI Türkçe Kompozisyon Değerlendirme Sistem | 🇬🇧 BERTTurk based Turkish Essay Scoring (AES) (DEMO VERSION)
+# 🇹🇷 BERTTurk TABANLI Türkçe Kompozisyon Değerlendirme Sistem AKADEMİK BİLDİRİ| 🇬🇧 BERTTurk based Turkish Essay Scoring (AES) CONFERENCE PAPER
+
+ARCENG IV. INTERNATIONAL ANKARA SCIENTIFIC STUDIES CONFERENCE
+August 08-10, 2025, Ankara, Türkiye
 
 Projemiz, Türkçe yazılmış kompozisyonları **dil bilgisi, tutarlılık ve kelime bilgisi** kriterlerine göre değerlendiren yapay zekâ tabanlı bir sistemdir.  
 Amaç; eğitim kurumları, öğretmenler, öğrenciler ve içerik üreticileri için Türkçe metinlerin hızlı, nesnel ve tutarlı biçimde puanlanmasını sağlamaktır.
