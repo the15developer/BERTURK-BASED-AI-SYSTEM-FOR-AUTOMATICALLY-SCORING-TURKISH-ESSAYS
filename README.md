@@ -80,13 +80,3 @@ The current demo version is trained with approximately 550 essays scored by Gemi
 
 - ![Demo Screenshot 1](lınkedin1.jpeg)  
 - ![Demo Screenshot 2](linkedin2.jpeg)  
-
-
----
-
-## 🛠️ Kurulum | Installation
-```bash
-git clone https://github.com/the15developer/BERTURK-BASED-AI-SYSTEM-FOR-AUTOMATICALLY-SCORING-TURKISH-ESSAYS.git
-cd project-folder
-pip install -r requirements.txt
-python app.py
